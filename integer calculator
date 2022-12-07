@@ -12,17 +12,15 @@ int divide(int a,int b);
 
 //main function
 int main(){
-    
+
     int userInput=0;
     int firstNum=0,secondNum=0;
     int result=0;
-    int history[]={};
-    int i=0;
-
-    puts("__Welcome to my calculator__");
+    
+    puts("_Welcome to my calculator_");
     while (userInput!=5)
     {
-        printf("1:Add\n2:Subtract\n3:Multiply\n4:Divide\n5:Quit\n6:Recent\n");
+        printf("1:Add\n2:Subtract\n3:Multiply\n4:Divide\n5:Quit\n");
         scanf(" %d",&userInput);
         switch (userInput)
         {
@@ -32,7 +30,6 @@ int main(){
             printf("Enter Second Num: ");
             scanf(" %d",&secondNum);
             result=add(firstNum,secondNum);
-            history[i]=result;
             printf(" Result is = %d\n",result);
             break;
         case 2://subtract
@@ -41,7 +38,6 @@ int main(){
             printf("Enter Second Num: ");
             scanf(" %d",&secondNum);
             result=subtract(firstNum,secondNum);
-            history[i]=result;
             printf(" Result is = %d\n",result);
             break;
         case 3://multiply
@@ -50,7 +46,6 @@ int main(){
             printf("Enter Second Num: ");
             scanf(" %d",&secondNum);
             result=multiply(firstNum,secondNum);
-            history[i]=result;
             printf(" Result is = %d\n",result);
             break;
          case 4://divide
@@ -59,30 +54,11 @@ int main(){
             printf("Enter Second Num: ");
             scanf(" %d",&secondNum);
             result=divide(firstNum,secondNum);
-            history[i]=result;
             printf(" Result is = %d\n",result);
             break;
         case 5://quit
-          FILE* historyFile=fopen("History.txt","a");
-           if(historyFile==NULL){
-               exit(0);
-            }
-            for(int a=0;a<i; a++){
-                fprintf(historyFile," %d: %d || ",a+1,history[a]);
-              }
-              fprintf(historyFile,"E\n");
-
-          fclose(historyFile);
+            exit(0);
         break;
-        case 6://recent
-            for(int a=0;a<i; a++){
-                printf(" %d: %d || ",a+1,history[a]);
-              }
-           break;
-        default:
-        puts("Unknown Input");
-        break;
-        i++;
     }
     }
     return 0;
